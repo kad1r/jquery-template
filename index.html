@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Template Ornegi</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Kutuphane Ornegi</h1>
+        <div id="container"></div>
+    </div>
+    <script id="ornekTemplate" type="text/x-jQuery-tmpl">
+        <div>
+            <img src="img/${kitap_resmi}" alt="" class="img-responsive" style="max-height:200px" />
+            <h3>${kitap_basligi}</h3>
+            <p>${kitap_ozeti}</p>
+            <p class="font-bold">Fiyat: ${kitap_fiyati}</p>
+            <hr />
+        </div>
+    </script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="js/jq-template.js"></script>
+    <script type="text/javascript">
+        // Ornek olmasi acisindan elle bir object array yaratiyorum
+        // Muhtemelen siz veritabanindan verileri cekip buraya json olarak donersiniz
+        var kitaplar = [
+            { kitap_basligi: "Nutuk", kitap_fiyat: 15.25, kitap_ozeti: "Nutuk kitabının özeti", kitap_resmi: "kitap_1.jpg" },
+            { kitap_basligi: "Atatürk ve Köy Enstitüleri", kitap_ozeti: "Atatürk ve Köy Enstitüleri kitabının özeti", kitap_fiyat: 22.99, kitap_resmi: "kitap_2.jpg" },
+            { kitap_basligi: "Atatürk - Geometri", kitap_ozeti: "Atatürk - Geometri kitabının özeti", kitap_fiyat: 21.00, kitap_resmi: "kitap_3.jpg" },
+            { kitap_basligi: "İnkılap Tarihi", kitap_ozeti: "İnkılap Tarihi kitabının özeti", kitap_fiyat: 26.99, kitap_resmi: "kitap_4.jpg" },
+        ];
+        // Burada json verisini ilgili template'e gore render ediyoruz ve sonucunun container id'li div'e yaziyoruz
+        $("#ornekTemplate").tmpl(kitaplar).appendTo("#container");
+    </script>
+</body>
+</html>
